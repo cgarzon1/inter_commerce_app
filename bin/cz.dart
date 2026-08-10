@@ -1,5 +1,5 @@
 // Asistente interactivo de commits (Conventional Commits).
-// Uso: dart run bin/cz.dart
+// Uso: fvm dart run bin/cz.dart
 import 'dart:io';
 
 class _CommitType {

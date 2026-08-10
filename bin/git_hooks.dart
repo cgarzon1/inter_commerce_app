@@ -1,8 +1,4 @@
 // Hook `commit-msg` que valida el estándar Conventional Commits.
-// Se ejecuta automáticamente por git en cada commit (terminal, GitHub Desktop,
-// VS Code, Android Studio, Sourcetree, etc.) una vez instalado con:
-//   dart run git_hooks:git_hooks create bin/git_hooks.dart
-// ignore_for_file: depend_on_referenced_packages
 import 'dart:io';
 import 'package:git_hooks/git_hooks.dart';
 
