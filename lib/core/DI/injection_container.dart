@@ -16,6 +16,7 @@ import '../../features/cart/domain/usecases/remove_cart_item.dart';
 import '../../features/cart/domain/usecases/remove_promo_code.dart';
 import '../../features/cart/domain/usecases/update_cart_item_quantity.dart';
 import '../../features/cart/presentation/cubit/cart_cubit.dart';
+import '../../features/products/data/datasources/product_local_data_source.dart';
 import '../../features/products/data/datasources/product_remote_data_source.dart';
 import '../../features/products/data/repositories/product_repository_impl.dart';
 import '../../features/products/domain/repositories/product_repository.dart';
@@ -42,7 +43,6 @@ Future<void> _initExternal() async {
   sl.registerLazySingleton<Dio>(() => DioClient.create());
   sl.registerLazySingleton<Connectivity>(() => Connectivity());
 
-  // Async: the ObjectBox 
   final objectBoxStore = await ObjectBoxStore.create();
   sl.registerSingleton<ObjectBoxStore>(objectBoxStore);
 }
@@ -64,13 +64,17 @@ void _initProductsFeature() {
   sl.registerLazySingleton<ProductRepository>(
     () => ProductRepositoryImpl(
       remoteDataSource: sl(),
+      localDataSource: sl(),
       networkInfo: sl(),
     ),
   );
 
-  // Data — Datasource
+  // Data 
   sl.registerLazySingleton<ProductRemoteDataSource>(
     () => ProductRemoteDataSourceImpl(sl()),
+  );
+  sl.registerLazySingleton<ProductLocalDataSource>(
+    () => ProductLocalDataSourceImpl(sl()),
   );
 
   sl.registerFactory(() => CatalogCubit(

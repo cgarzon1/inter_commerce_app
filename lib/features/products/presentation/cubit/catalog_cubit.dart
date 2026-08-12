@@ -11,7 +11,6 @@ import '../../domain/usecases/get_products.dart';
 import '../../domain/usecases/get_products_by_category.dart';
 import 'catalog_state.dart';
 
-
 class CatalogCubit extends Cubit<CatalogState> {
   CatalogCubit({
     required this.getProducts,
@@ -30,7 +29,9 @@ class CatalogCubit extends Cubit<CatalogState> {
     emit(const CatalogState(status: CatalogStatus.loading));
     _skip = 0;
 
-
+    // Fired together, not awaited one after the other: the full
+    // category list and the first page of products don't depend on
+    // each other, so there's no reason to pay for them sequentially.
     final productsFuture = getProducts(const GetProductsParams(skip: 0));
     final categoriesFuture = getCategories(const NoParams());
 
@@ -41,6 +42,7 @@ class CatalogCubit extends Cubit<CatalogState> {
       (failure) => emit(CatalogState(status: CatalogStatus.error, failure: failure)),
       (page) {
         // Categories are supplementary — if they fail to load, degrade
+        // to an empty filter row instead of blocking the whole catalog.
         final categories = categoriesResult.fold(
           (_) => const <ProductCategory>[],
           (categories) => categories,
@@ -50,11 +52,15 @@ class CatalogCubit extends Cubit<CatalogState> {
           products: page.products,
           categories: categories,
           hasMore: page.hasMore,
+          isOffline: page.isFromCache,
         ));
       },
     );
   }
 
+  /// Pull-to-refresh and the "reintentar" action both call this. Reloads
+  /// whatever scope is currently active — "Todo" or the selected
+  /// category — not just the unfiltered listing.
   Future<void> refresh() async {
     final category = state.selectedCategory;
     _skip = 0;
@@ -65,7 +71,7 @@ class CatalogCubit extends Cubit<CatalogState> {
       (page) => emit(state.copyWith(
         products: page.products,
         hasMore: page.hasMore,
-        isOffline: false,
+        isOffline: page.isFromCache,
       )),
     );
   }
@@ -80,7 +86,6 @@ class CatalogCubit extends Cubit<CatalogState> {
     final result = await _fetchPage(state.selectedCategory, skip: nextSkip);
     result.fold(
       (failure) {
-
         emit(state.copyWith(
           isLoadingMore: false,
           isOffline: failure is NetworkFailure,
@@ -92,12 +97,11 @@ class CatalogCubit extends Cubit<CatalogState> {
           products: [...state.products, ...page.products],
           hasMore: page.hasMore,
           isLoadingMore: false,
-          isOffline: false,
+          isOffline: page.isFromCache,
         ));
       },
     );
   }
-
 
   Future<void> selectCategory(String? category) async {
     final next = category == state.selectedCategory ? null : category;
@@ -115,8 +119,6 @@ class CatalogCubit extends Cubit<CatalogState> {
     final result = await _fetchFirstPage(next);
     result.fold(
       (failure) {
-        // Roll back to what was on screen before the tap; surface the
-        // offline banner if that's why it failed.
         emit(state.copyWith(
           products: previousProducts,
           hasMore: previousHasMore,
@@ -130,7 +132,7 @@ class CatalogCubit extends Cubit<CatalogState> {
         products: page.products,
         hasMore: page.hasMore,
         isSwitchingCategory: false,
-        isOffline: false,
+        isOffline: page.isFromCache,
       )),
     );
   }
