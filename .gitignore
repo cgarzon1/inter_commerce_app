@@ -62,3 +62,7 @@ app.*.map.json
 
 # FVM Version Cache
 .fvm/
+# ObjectBox native lib for running tests locally (installed via
+# objectbox-dart's install.sh) — never part of the app bundle itself.
+libobjectbox.dylib
+libobjectbox.so

@@ -51,6 +51,9 @@ dependencies:
   # git dependency (pinned tag/commit) once it stabilizes.
   inter_commerce_app_design_system:
     path: ../inter_commerce_app_design_system
+  objectbox: ^5.3.2
+  objectbox_flutter_libs: ^5.3.2
+  path_provider: ^2.1.6
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +68,8 @@ dev_dependencies:
 
   # Hook `commit-msg` que valida Conventional Commits (ver bin/git_hooks.dart).
   git_hooks: ^1.0.2
+  objectbox_generator: ^5.3.2
+  build_runner: ^2.15.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

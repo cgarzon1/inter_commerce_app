@@ -4,6 +4,18 @@ import 'package:get_it/get_it.dart';
 
 import '../network/dio_client.dart';
 import '../network/network_info.dart';
+import '../persistence/objectbox_store.dart';
+import '../../features/cart/data/datasources/cart_local_data_source.dart';
+import '../../features/cart/data/repositories/cart_repository_impl.dart';
+import '../../features/cart/domain/repositories/cart_repository.dart';
+import '../../features/cart/domain/usecases/add_cart_item.dart';
+import '../../features/cart/domain/usecases/apply_promo_code.dart';
+import '../../features/cart/domain/usecases/calculate_cart_totals.dart';
+import '../../features/cart/domain/usecases/get_cart.dart';
+import '../../features/cart/domain/usecases/remove_cart_item.dart';
+import '../../features/cart/domain/usecases/remove_promo_code.dart';
+import '../../features/cart/domain/usecases/update_cart_item_quantity.dart';
+import '../../features/cart/presentation/cubit/cart_cubit.dart';
 import '../../features/products/data/datasources/product_remote_data_source.dart';
 import '../../features/products/data/repositories/product_repository_impl.dart';
 import '../../features/products/domain/repositories/product_repository.dart';
@@ -19,15 +31,20 @@ import '../../features/products/presentation/cubit/product_detail_cubit.dart';
 final GetIt sl = GetIt.instance;
 
 Future<void> initDependencies() async {
-  _initExternal();
+  await _initExternal();
   _initCore();
   _initProductsFeature();
+  _initCartFeature();
 }
 
 /// Third-party clients that don't belong to any single feature.
-void _initExternal() {
+Future<void> _initExternal() async {
   sl.registerLazySingleton<Dio>(() => DioClient.create());
   sl.registerLazySingleton<Connectivity>(() => Connectivity());
+
+  // Async: the ObjectBox 
+  final objectBoxStore = await ObjectBoxStore.create();
+  sl.registerSingleton<ObjectBoxStore>(objectBoxStore);
 }
 
 /// Cross-cutting infrastructure every feature can depend on.
@@ -62,4 +79,36 @@ void _initProductsFeature() {
         getCategories: sl(),
       ));
   sl.registerFactory(() => ProductDetailCubit(getProductDetail: sl()));
+}
+
+void _initCartFeature() {
+  // Domain — Use cases
+  sl.registerLazySingleton(() => GetCart(sl()));
+  sl.registerLazySingleton(() => AddCartItem(sl()));
+  sl.registerLazySingleton(() => UpdateCartItemQuantity(sl()));
+  sl.registerLazySingleton(() => RemoveCartItem(sl()));
+  sl.registerLazySingleton(() => ApplyPromoCode(sl()));
+  sl.registerLazySingleton(() => RemovePromoCode(sl()));
+  sl.registerLazySingleton(() => const CalculateCartTotals());
+
+  // Data — Repository (registered against the Domain interface)
+  sl.registerLazySingleton<CartRepository>(
+    () => CartRepositoryImpl(localDataSource: sl()),
+  );
+
+  // Data — Datasource (ObjectBox)
+  sl.registerLazySingleton<CartLocalDataSource>(
+    () => CartLocalDataSourceImpl(sl()),
+  );
+
+  // Presentation 
+  sl.registerLazySingleton(() => CartCubit(
+        getCart: sl(),
+        addCartItem: sl(),
+        updateCartItemQuantity: sl(),
+        removeCartItem: sl(),
+        applyPromoCode: sl(),
+        removePromoCode: sl(),
+        calculateCartTotals: sl(),
+      ));
 }

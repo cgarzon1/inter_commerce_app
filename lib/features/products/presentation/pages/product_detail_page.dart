@@ -5,6 +5,7 @@ import 'package:inter_commerce_app_design_system/inter_commerce_app_design_syste
 import '../../../../core/DI/injection_container.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../l10n/generated/app_localizations.dart';
+import '../../../cart/presentation/cubit/cart_cubit.dart';
 import '../../domain/entities/product.dart';
 import '../cubit/product_detail_cubit.dart';
 import '../cubit/product_detail_state.dart';
@@ -37,11 +38,13 @@ class _ProductDetailView extends StatefulWidget {
 class _ProductDetailViewState extends State<_ProductDetailView> {
   InterCommerceButtonState _ctaState = InterCommerceButtonState.idle;
 
-  Future<void> _addToCart() async {
-    // TODO(cart): wire to the Carrito de Compras module — for now this
-    // only plays the button's own confirm microinteraction.
+  Future<void> _addToCart(Product product) async {
+    final cartCubit = context.read<CartCubit>();
     setState(() => _ctaState = InterCommerceButtonState.pending);
-    await Future.delayed(InterCommerceDurations.addToCartPending);
+    await Future.wait([
+      cartCubit.addProduct(product),
+      Future.delayed(InterCommerceDurations.addToCartPending),
+    ]);
     if (!mounted) return;
     setState(() => _ctaState = InterCommerceButtonState.success);
     await Future.delayed(InterCommerceDurations.addToCartSuccessHold);
@@ -67,7 +70,7 @@ class _ProductDetailViewState extends State<_ProductDetailView> {
           product: product,
           isSaved: state.isSaved,
           ctaState: _ctaState,
-          onAddToCart: product.isInStock ? _addToCart : null,
+          onAddToCart: product.isInStock ? () => _addToCart(product) : null,
         );
       },
     );

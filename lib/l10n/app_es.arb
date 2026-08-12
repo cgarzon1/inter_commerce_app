@@ -169,5 +169,117 @@
     "detailOutOfStock": "Agotado",
     "@detailOutOfStock": {
         "description": "Copy mostrado cuando el producto no tiene stock disponible."
+    },
+
+    "cartEyebrow": "Tu selección",
+    "@cartEyebrow": {
+        "description": "Eyebrow sobre el título de la pantalla de carrito."
+    },
+
+    "cartTitle": "Carrito",
+    "@cartTitle": {
+        "description": "Título de la pantalla de carrito."
+    },
+
+    "cartItemsCount": "{count, plural, =1{1 pieza} other{{count} piezas}}",
+    "@cartItemsCount": {
+        "description": "Cantidad de piezas en el carrito, junto al título.",
+        "placeholders": {
+            "count": {"type": "int"}
+        }
+    },
+
+    "cartPromoHint": "Código promocional",
+    "@cartPromoHint": {
+        "description": "Placeholder del campo para ingresar un código promocional."
+    },
+
+    "cartPromoApply": "Aplicar",
+    "@cartPromoApply": {
+        "description": "Botón para aplicar el código promocional ingresado."
+    },
+
+    "cartPromoInvalid": "Código promocional no válido",
+    "@cartPromoInvalid": {
+        "description": "Copy mostrado cuando el código promocional ingresado no existe."
+    },
+
+    "cartPromoApplied": "aplicado -{percentage}%",
+    "@cartPromoApplied": {
+        "description": "Detalle mostrado junto al código promocional ya aplicado.",
+        "placeholders": {
+            "percentage": {"type": "int"}
+        }
+    },
+
+    "cartSubtotal": "Subtotal",
+    "@cartSubtotal": {
+        "description": "Fila de subtotal en el resumen de la orden."
+    },
+
+    "cartTax": "Impuestos ({rate}%)",
+    "@cartTax": {
+        "description": "Fila de impuestos en el resumen de la orden.",
+        "placeholders": {
+            "rate": {"type": "int"}
+        }
+    },
+
+    "cartDiscount": "Descuento {code}",
+    "@cartDiscount": {
+        "description": "Fila de descuento por código promocional en el resumen de la orden.",
+        "placeholders": {
+            "code": {"type": "String"}
+        }
+    },
+
+    "cartShippingLabel": "Envío",
+    "@cartShippingLabel": {
+        "description": "Fila de envío en el resumen de la orden."
+    },
+
+    "cartShippingFree": "Cortesía",
+    "@cartShippingFree": {
+        "description": "Valor de la fila de envío cuando es gratuito."
+    },
+
+    "cartTotal": "Total",
+    "@cartTotal": {
+        "description": "Fila de total en el resumen de la orden."
+    },
+
+    "cartCheckout": "Finalizar compra",
+    "@cartCheckout": {
+        "description": "CTA principal de la pantalla de carrito."
+    },
+
+    "cartEmptyTitle": "Tu carrito está vacío",
+    "@cartEmptyTitle": {
+        "description": "Título del estado vacío del carrito."
+    },
+
+    "cartEmptyMessage": "Agrega productos desde el catálogo para verlos aquí.",
+    "@cartEmptyMessage": {
+        "description": "Mensaje del estado vacío del carrito."
+    },
+
+    "cartExploreCatalog": "Explorar el catálogo",
+    "@cartExploreCatalog": {
+        "description": "Acción del estado vacío del carrito, vuelve a la tienda."
+    },
+
+    "cartRemoveItem": "Eliminar",
+    "@cartRemoveItem": {
+        "description": "Label semántico del botón para quitar una línea del carrito."
+    },
+
+    "cartDecrementQuantity": "Disminuir cantidad",
+    "@cartDecrementQuantity": {
+        "description": "Label semántico del botón para disminuir la cantidad de una línea."
+    },
+
+    "cartIncrementQuantity": "Aumentar cantidad",
+    "@cartIncrementQuantity": {
+        "description": "Label semántico del botón para aumentar la cantidad de una línea."
     }
 }
