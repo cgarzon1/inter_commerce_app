@@ -13,6 +13,7 @@ import '../../features/products/domain/usecases/get_products.dart';
 import '../../features/products/domain/usecases/get_products_by_category.dart';
 import '../../features/products/domain/usecases/search_products.dart';
 import '../../features/products/presentation/cubit/catalog_cubit.dart';
+import '../../features/products/presentation/cubit/product_detail_cubit.dart';
 
 
 final GetIt sl = GetIt.instance;
@@ -60,4 +61,5 @@ void _initProductsFeature() {
         getProductsByCategory: sl(),
         getCategories: sl(),
       ));
+  sl.registerFactory(() => ProductDetailCubit(getProductDetail: sl()));
 }

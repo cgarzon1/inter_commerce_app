@@ -10,6 +10,7 @@ import '../cubit/catalog_cubit.dart';
 import '../cubit/catalog_state.dart';
 import '../utils/category_label.dart';
 import '../widgets/product_network_image.dart';
+import 'product_detail_page.dart';
 
 
 class CatalogPage extends StatelessWidget {
@@ -199,9 +200,10 @@ class _CatalogLoadedView extends StatelessWidget {
   }
 
   void _openDetail(BuildContext context, Product product) {
-    // TODO(product-detail): wire to the Detalle de Producto module.
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(product.title)),
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => ProductDetailPage(productId: product.id, initialProduct: product),
+      ),
     );
   }
 }

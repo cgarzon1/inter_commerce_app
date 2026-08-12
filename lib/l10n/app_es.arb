@@ -11,6 +11,11 @@
         "description": "Botón para reintentar una acción que falló."
     },
 
+    "commonBack": "Volver",
+    "@commonBack": {
+        "description": "Label semántico del botón de retroceso."
+    },
+
     "commonCancel": "Cancelar",
     "@commonCancel": {
         "description": "Botón para cancelar la acción actual."
@@ -124,5 +129,45 @@
     "catalogOfflineMessage": "Sin conexión — mostrando lo último cargado",
     "@catalogOfflineMessage": {
         "description": "Banner mostrado cuando falla la carga de más productos por falta de red pero ya hay productos en pantalla."
+    },
+
+    "detailSave": "Guardar",
+    "@detailSave": {
+        "description": "Botón para guardar/marcar favorito un producto, estado inactivo."
+    },
+
+    "detailSaved": "Guardado",
+    "@detailSaved": {
+        "description": "Botón para guardar/marcar favorito un producto, estado activo."
+    },
+
+    "detailDescriptionTitle": "Descripción y materiales",
+    "@detailDescriptionTitle": {
+        "description": "Título de la sección expandible con la descripción del producto."
+    },
+
+    "detailTotal": "Total",
+    "@detailTotal": {
+        "description": "Etiqueta sobre el precio total en el footer fijo del detalle."
+    },
+
+    "detailAddToCart": "Agregar al carrito",
+    "@detailAddToCart": {
+        "description": "CTA principal del detalle de producto, estado inactivo."
+    },
+
+    "detailAddingToCart": "Añadiendo...",
+    "@detailAddingToCart": {
+        "description": "CTA del detalle de producto mientras se procesa, estado pendiente."
+    },
+
+    "detailAddedToCart": "Añadido ✓",
+    "@detailAddedToCart": {
+        "description": "CTA del detalle de producto tras agregar con éxito, estado de confirmación."
+    },
+
+    "detailOutOfStock": "Agotado",
+    "@detailOutOfStock": {
+        "description": "Copy mostrado cuando el producto no tiene stock disponible."
     }
 }
