@@ -228,6 +228,16 @@
         "description": "CTA principal de la pantalla de carrito."
     },
 
+    "cartOrderSuccessTitle": "¡Pedido realizado con éxito!",
+    "@cartOrderSuccessTitle": {
+        "description": "Título del diálogo de confirmación tras finalizar la compra."
+    },
+
+    "cartOrderSuccessMessage": "Gracias por tu compra. Te avisaremos cuando tu pedido esté en camino.",
+    "@cartOrderSuccessMessage": {
+        "description": "Mensaje del diálogo de confirmación tras finalizar la compra."
+    },
+
     "cartEmptyTitle": "Tu carrito está vacío",
     "@cartEmptyTitle": {
         "description": "Título del estado vacío del carrito."

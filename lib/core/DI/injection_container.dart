@@ -11,6 +11,7 @@ import '../../features/cart/domain/repositories/cart_repository.dart';
 import '../../features/cart/domain/usecases/add_cart_item.dart';
 import '../../features/cart/domain/usecases/apply_promo_code.dart';
 import '../../features/cart/domain/usecases/calculate_cart_totals.dart';
+import '../../features/cart/domain/usecases/clear_cart.dart';
 import '../../features/cart/domain/usecases/get_cart.dart';
 import '../../features/cart/domain/usecases/remove_cart_item.dart';
 import '../../features/cart/domain/usecases/remove_promo_code.dart';
@@ -96,6 +97,7 @@ void _initCartFeature() {
   sl.registerLazySingleton(() => ApplyPromoCode(sl()));
   sl.registerLazySingleton(() => RemovePromoCode(sl()));
   sl.registerLazySingleton(() => const CalculateCartTotals());
+  sl.registerLazySingleton(() => ClearCart(sl()));
 
   // Data — Repository (registered against the Domain interface)
   sl.registerLazySingleton<CartRepository>(
@@ -116,5 +118,6 @@ void _initCartFeature() {
         applyPromoCode: sl(),
         removePromoCode: sl(),
         calculateCartTotals: sl(),
+        clearCart: sl(),
       ));
 }

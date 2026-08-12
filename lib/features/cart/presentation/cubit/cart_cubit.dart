@@ -8,6 +8,7 @@ import '../../domain/entities/cart.dart';
 import '../../domain/usecases/add_cart_item.dart';
 import '../../domain/usecases/apply_promo_code.dart';
 import '../../domain/usecases/calculate_cart_totals.dart';
+import '../../domain/usecases/clear_cart.dart';
 import '../../domain/usecases/get_cart.dart';
 import '../../domain/usecases/remove_cart_item.dart';
 import '../../domain/usecases/remove_promo_code.dart';
@@ -24,6 +25,7 @@ class CartCubit extends Cubit<CartState> {
     required this.applyPromoCode,
     required this.removePromoCode,
     required this.calculateCartTotals,
+    required this.clearCart,
   }) : super(const CartState());
 
   final GetCart getCart;
@@ -33,6 +35,7 @@ class CartCubit extends Cubit<CartState> {
   final ApplyPromoCode applyPromoCode;
   final RemovePromoCode removePromoCode;
   final CalculateCartTotals calculateCartTotals;
+  final ClearCart clearCart;
 
   Future<void> load() async {
     emit(state.copyWith(status: CartStatus.loading));
@@ -63,6 +66,22 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> removePromo() {
     return _apply(removePromoCode(const NoParams()));
+  }
+
+  /// Places the order and empties the cart. Returns whether it
+  /// succeeded so the page can decide whether to show a confirmation.
+  Future<bool> checkout() async {
+    final result = await clearCart(const NoParams());
+    return result.fold(
+      (failure) {
+        emit(state.copyWith(status: CartStatus.error, failure: failure));
+        return false;
+      },
+      (cart) {
+        _onCartChanged(cart, clearPromoError: true);
+        return true;
+      },
+    );
   }
 
   /// Shared tail for every mutation: emit the fresh [Cart], then

@@ -114,11 +114,31 @@ class _CartContent extends StatelessWidget {
         const SizedBox(height: InterCommerceSpacing.xl),
         InterCommerceButton(
           label: l10n.cartCheckout,
-          // TODO(checkout): no checkout/payment flow is in scope yet —
-          // this is where it plugs in once it exists.
-          onPressed: () {},
+          onPressed: () => _handleCheckout(context),
         ),
       ],
+    );
+  }
+
+  Future<void> _handleCheckout(BuildContext context) async {
+    final cubit = context.read<CartCubit>();
+    final success = await cubit.checkout();
+    if (!context.mounted || !success) return;
+
+    final l10n = AppLocalizations.of(context)!;
+    await showDialog<void>(
+      context: context,
+      builder: (dialogContext) => AlertDialog(
+        icon: const Icon(Icons.check_circle_rounded),
+        title: Text(l10n.cartOrderSuccessTitle),
+        content: Text(l10n.cartOrderSuccessMessage),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dialogContext).pop(),
+            child: Text(l10n.commonAccept),
+          ),
+        ],
+      ),
     );
   }
 }
