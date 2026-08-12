@@ -11,6 +11,8 @@ App móvil de e-commerce en Flutter, sobre la API pública de [DummyJSON](https:
 | [`inter_commerce_app`](https://github.com/cgarzon1/inter_commerce_app) | La app (este repo) |
 | [`inter_commerce_app_design_system`](https://github.com/cgarzon1/inter_commerce_app_design_system) | Tokens, tema y componentes UI, como paquete Flutter aparte |
 
+APK de release firmado, disponible en [GitHub Releases](https://github.com/cgarzon1/inter_commerce_app/releases).
+
 ## Contenido
 
 - [Conventional Commits](#conventional-commits)
