@@ -1,0 +1,63 @@
+{
+    "@@locale": "es",
+
+    "appName": "Inter Commerce",
+    "@appName": {
+        "description": "Nombre de la app, usado como título de MaterialApp."
+    },
+
+    "commonRetry": "Reintentar",
+    "@commonRetry": {
+        "description": "Botón para reintentar una acción que falló."
+    },
+
+    "commonCancel": "Cancelar",
+    "@commonCancel": {
+        "description": "Botón para cancelar la acción actual."
+    },
+
+    "commonAccept": "Aceptar",
+    "@commonAccept": {
+        "description": "Botón de confirmación genérico."
+    },
+
+    "commonLoading": "Cargando...",
+    "@commonLoading": {
+        "description": "Texto mostrado mientras se carga contenido."
+    },
+
+    "commonSearch": "Buscar",
+    "@commonSearch": {
+        "description": "Placeholder/label del campo de búsqueda."
+    },
+
+    "commonNoResults": "No se encontraron resultados",
+    "@commonNoResults": {
+        "description": "Estado vacío tras una búsqueda sin coincidencias."
+    },
+
+    "errorServer": "No pudimos completar la solicitud. Intenta de nuevo.",
+    "@errorServer": {
+        "description": "Copy para ServerFailure (core/error/failures.dart)."
+    },
+
+    "errorNetwork": "Sin conexión a internet. Revisa tu red e intenta de nuevo.",
+    "@errorNetwork": {
+        "description": "Copy para NetworkFailure."
+    },
+
+    "errorCache": "No pudimos leer los datos guardados en el dispositivo.",
+    "@errorCache": {
+        "description": "Copy para CacheFailure."
+    },
+
+    "errorValidation": "Revisa la información ingresada.",
+    "@errorValidation": {
+        "description": "Copy para ValidationFailure."
+    },
+
+    "errorUnexpected": "Ocurrió un error inesperado.",
+    "@errorUnexpected": {
+        "description": "Copy para UnexpectedFailure / catch-all."
+    }
+}
