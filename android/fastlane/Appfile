@@ -1,2 +1,2 @@
-# No usamos supply/upload_to_play_store por ahora — solo build + tag + GitHub
+
 package_name("com.test.inter_commerce_app")
