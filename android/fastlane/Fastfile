@@ -12,14 +12,16 @@ platform :android do
 
     flavor = options[:flavor] || ENV["FLAVOR"] || "dev"
 
-    # El Fastfile corre con cwd = android/, la raíz del proyecto Flutter
-    # está un nivel arriba.
-    project_root = File.expand_path("..", Dir.pwd)
+    # El Fastfile corre con cwd = android/fastlane/ (no android/ — ver
+    # https://docs.fastlane.tools/advanced/#directory-behavior). android/
+    # está un nivel arriba, la raíz del proyecto Flutter dos niveles arriba.
+    android_dir = File.expand_path("..", Dir.pwd)
+    project_root = File.expand_path("..", android_dir)
     pubspec = YAML.load_file(File.join(project_root, "pubspec.yaml"))
     version_name, build_number = pubspec["version"].to_s.split("+")
     tag_name = "v#{version_name}+#{build_number}"
 
-    key_properties = File.join(Dir.pwd, "key.properties")
+    key_properties = File.join(android_dir, "key.properties")
     unless File.exist?(key_properties)
       UI.user_error!(
         "No existe android/key.properties — el build firmaría con la " \
