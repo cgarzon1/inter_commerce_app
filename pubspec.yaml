@@ -77,6 +77,15 @@ dev_dependencies:
   mocktail: ^1.0.4
   bloc_test: ^10.0.0
 
+  # Genera el ícono de la app (Android/iOS) a partir de assets/icon/app_icon.png.
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  remove_alpha_ios: true
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

@@ -1,5 +1,6 @@
-/// Empty for now — no image/icon assets exist yet. Gets populated
-/// together with the design system integration (last step of the build).
+/// Rutas de assets estáticos empacados con la app (ver `assets:` en
+/// pubspec.yaml). Referenciadas desde acá en vez de escribir el string
+/// literal en cada widget que necesite una imagen/ícono.
 library;
 
 class AppImages {
@@ -11,5 +12,5 @@ class AppImages {
 class AppIcons {
   AppIcons._();
 
-  // static const String cart = 'assets/icons/cart.svg';
+  static const String cart = 'assets/icons/cart.png';
 }
