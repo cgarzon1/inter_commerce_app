@@ -1,0 +1,45 @@
+name: PR checks
+
+# Corre en cada PR que apunte a main — no en push directo, no en otras ramas.
+on:
+  pull_request:
+    branches:
+      - main
+
+# Si se sube un nuevo commit al mismo PR, cancela la corrida anterior en vez
+# de dejarla terminar en paralelo.
+concurrency:
+  group: pr-checks-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  analyze-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Misma versión que .fvmrc — en CI no hace falta fvm (solo administra
+      # múltiples versiones en una máquina de desarrollo), se fija directo.
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.44.9"
+          channel: "stable"
+          cache: true
+
+      - name: Instalar librería nativa de ObjectBox
+        # Necesaria para correr tests que tocan un Store real (ver
+        # CartRepositoryImpl/ProductLocalDataSource) — sin esto, flutter
+        # test falla con "Failed to load ObjectBox library".
+        run: bash <(curl -s https://raw.githubusercontent.com/objectbox/objectbox-dart/main/install.sh)
+
+      - name: flutter pub get
+        run: flutter pub get
+
+      - name: flutter gen-l10n
+        run: flutter gen-l10n
+
+      - name: flutter analyze
+        run: flutter analyze
+
+      - name: flutter test
+        run: flutter test test/features/products/
