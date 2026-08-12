@@ -72,6 +72,11 @@ dev_dependencies:
   objectbox_generator: ^5.3.2
   build_runner: ^2.15.1
 
+  # Tests unitarios: fakes/mocks de repos y use cases (mocktail, sin
+  # code-gen) y aserciones de secuencias de estado para Cubits (bloc_test).
+  mocktail: ^1.0.4
+  bloc_test: ^10.0.0
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
