@@ -68,7 +68,6 @@ class _ProductDetailViewState extends State<_ProductDetailView> {
         }
         return _DetailContent(
           product: product,
-          isSaved: state.isSaved,
           ctaState: _ctaState,
           onAddToCart: product.isInStock ? () => _addToCart(product) : null,
         );
@@ -80,13 +79,11 @@ class _ProductDetailViewState extends State<_ProductDetailView> {
 class _DetailContent extends StatelessWidget {
   const _DetailContent({
     required this.product,
-    required this.isSaved,
     required this.ctaState,
     required this.onAddToCart,
   });
 
   final Product product;
-  final bool isSaved;
   final InterCommerceButtonState ctaState;
   final VoidCallback? onAddToCart;
 
@@ -156,14 +153,6 @@ class _DetailContent extends StatelessWidget {
               semanticLabel: l10n.commonBack,
             ),
           ),
-          Positioned(
-            top: topInset + InterCommerceSpacing.sm,
-            right: InterCommerceSpacing.lg,
-            child: _SaveButton(
-              saved: isSaved,
-              onPressed: () => context.read<ProductDetailCubit>().toggleSaved(),
-            ),
-          ),
         ],
       ),
       bottomNavigationBar: SafeArea(
@@ -201,53 +190,6 @@ class _DetailContent extends StatelessWidget {
                   ),
                 ),
               ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _SaveButton extends StatelessWidget {
-  const _SaveButton({required this.saved, required this.onPressed});
-
-  final bool saved;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final colors = Theme.of(context).colorScheme;
-    final semanticColors = InterCommerceSemanticColors.of(context);
-
-    return Semantics(
-      button: true,
-      selected: saved,
-      label: saved ? l10n.detailSaved : l10n.detailSave,
-      child: Material(
-        color: semanticColors.glassSurface,
-        shape: const StadiumBorder(),
-        child: InkWell(
-          customBorder: const StadiumBorder(),
-          onTap: onPressed,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(minHeight: InterCommerceControlSize.minimumTouchTarget),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: InterCommerceSpacing.md),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    saved ? Icons.bookmark_rounded : Icons.bookmark_border_rounded,
-                    size: 16,
-                    color: colors.onSurface,
-                  ),
-                  const SizedBox(width: InterCommerceSpacing.xxs),
-                  Text(saved ? l10n.detailSaved : l10n.detailSave,
-                      style: InterCommerceTypography.eyebrow(colors.onSurface)),
-                ],
-              ),
             ),
           ),
         ),

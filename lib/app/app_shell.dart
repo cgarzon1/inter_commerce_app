@@ -6,6 +6,7 @@ import '../features/cart/presentation/cubit/cart_cubit.dart';
 import '../features/cart/presentation/cubit/cart_state.dart';
 import '../features/cart/presentation/pages/cart_page.dart';
 import '../features/products/presentation/pages/catalog_page.dart';
+import '../features/products/presentation/pages/search_page.dart';
 import '../l10n/generated/app_localizations.dart';
 
 
@@ -27,9 +28,8 @@ class _AppShellState extends State<AppShell> {
 
     final screens = [
       const CatalogPage(),
-      _ComingSoonPage(icon: Icons.search_rounded),
+      const SearchPage(),
       CartPage(onExploreCatalog: _goToShop),
-      _ComingSoonPage(icon: Icons.person_outline_rounded),
     ];
 
     return Scaffold(
@@ -48,32 +48,9 @@ class _AppShellState extends State<AppShell> {
                 icon: Icons.shopping_bag_outlined,
                 badgeCount: cartState.cart.itemCount,
               ),
-              InterCommerceNavItem(label: l10n.navAccount, icon: Icons.person_outline_rounded),
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class _ComingSoonPage extends StatelessWidget {
-  const _ComingSoonPage({required this.icon});
-
-  final IconData icon;
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-
-    return InterCommerceScaffold(
-      showBackButton: false,
-      body: Center(
-        child: InterCommerceEmptyState(
-          icon: Icon(icon),
-          title: l10n.comingSoonTitle,
-          message: l10n.comingSoonMessage,
-        ),
       ),
     );
   }

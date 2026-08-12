@@ -81,21 +81,6 @@
         "description": "Tab del bottom nav: carrito."
     },
 
-    "navAccount": "Cuenta",
-    "@navAccount": {
-        "description": "Tab del bottom nav: cuenta."
-    },
-
-    "comingSoonTitle": "Próximamente",
-    "@comingSoonTitle": {
-        "description": "Título para una sección/tab aún no implementada."
-    },
-
-    "comingSoonMessage": "Estamos trabajando en esta sección.",
-    "@comingSoonMessage": {
-        "description": "Mensaje para una sección/tab aún no implementada."
-    },
-
     "catalogEyebrow": "Catálogo",
     "@catalogEyebrow": {
         "description": "Eyebrow sobre el título de la pantalla de catálogo."
@@ -129,16 +114,6 @@
     "catalogOfflineMessage": "Sin conexión — mostrando lo último cargado",
     "@catalogOfflineMessage": {
         "description": "Banner mostrado cuando falla la carga de más productos por falta de red pero ya hay productos en pantalla."
-    },
-
-    "detailSave": "Guardar",
-    "@detailSave": {
-        "description": "Botón para guardar/marcar favorito un producto, estado inactivo."
-    },
-
-    "detailSaved": "Guardado",
-    "@detailSaved": {
-        "description": "Botón para guardar/marcar favorito un producto, estado activo."
     },
 
     "detailDescriptionTitle": "Descripción y materiales",
@@ -281,5 +256,35 @@
     "cartIncrementQuantity": "Aumentar cantidad",
     "@cartIncrementQuantity": {
         "description": "Label semántico del botón para aumentar la cantidad de una línea."
+    },
+
+    "searchEyebrow": "Buscar",
+    "@searchEyebrow": {
+        "description": "Eyebrow sobre el título de la pantalla de búsqueda."
+    },
+
+    "searchFieldHint": "Buscar productos",
+    "@searchFieldHint": {
+        "description": "Placeholder del campo de texto de la pantalla de búsqueda."
+    },
+
+    "searchInitialTitle": "Descubre productos",
+    "@searchInitialTitle": {
+        "description": "Título del estado inicial (sin búsqueda aún) de la pantalla de búsqueda."
+    },
+
+    "searchInitialMessage": "Escribe para buscar en el catálogo.",
+    "@searchInitialMessage": {
+        "description": "Mensaje del estado inicial (sin búsqueda aún) de la pantalla de búsqueda."
+    },
+
+    "searchEmptyMessage": "Intenta con otro término.",
+    "@searchEmptyMessage": {
+        "description": "Mensaje del estado vacío tras una búsqueda sin coincidencias."
+    },
+
+    "searchClearField": "Borrar búsqueda",
+    "@searchClearField": {
+        "description": "Label semántico del botón para vaciar el campo de búsqueda."
     }
 }
