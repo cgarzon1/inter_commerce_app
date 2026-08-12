@@ -27,11 +27,20 @@ migrate_working_dir/
 **/doc/api/
 **/ios/Flutter/.last_build_id
 .dart_tool/
+.flutter-plugins
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
 /build/
 /coverage/
+
+# Mobile-only project (android/ios) — `flutter pub get`/`analyze` still
+# regenerates stub plugin-registrant folders for the other platforms;
+# never track them.
+/linux/
+/macos/
+/web/
+/windows/
 
 # Symbolication related
 app.*.symbols
@@ -43,3 +52,17 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# Environment configuration (per-developer/per-machine; see .env.example)
+.env
+
+# Generated from lib/l10n/*.arb by `flutter gen-l10n` (runs automatically
+# on `flutter pub get`/build thanks to `generate: true` in pubspec.yaml).
+/lib/l10n/generated/
+
+# FVM Version Cache
+.fvm/
+# ObjectBox native lib for running tests locally (installed via
+# objectbox-dart's install.sh) — never part of the app bundle itself.
+libobjectbox.dylib
+libobjectbox.so

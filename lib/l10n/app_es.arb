@@ -11,6 +11,11 @@
         "description": "Botón para reintentar una acción que falló."
     },
 
+    "commonBack": "Volver",
+    "@commonBack": {
+        "description": "Label semántico del botón de retroceso."
+    },
+
     "commonCancel": "Cancelar",
     "@commonCancel": {
         "description": "Botón para cancelar la acción actual."
@@ -59,5 +64,237 @@
     "errorUnexpected": "Ocurrió un error inesperado.",
     "@errorUnexpected": {
         "description": "Copy para UnexpectedFailure / catch-all."
+    },
+
+    "navShop": "Tienda",
+    "@navShop": {
+        "description": "Tab del bottom nav: catálogo."
+    },
+
+    "navSearch": "Buscar",
+    "@navSearch": {
+        "description": "Tab del bottom nav: búsqueda."
+    },
+
+    "navCart": "Carrito",
+    "@navCart": {
+        "description": "Tab del bottom nav: carrito."
+    },
+
+    "catalogEyebrow": "Catálogo",
+    "@catalogEyebrow": {
+        "description": "Eyebrow sobre el título de la pantalla de catálogo."
+    },
+
+    "catalogTitle": "Todos los productos",
+    "@catalogTitle": {
+        "description": "Título grande de la pantalla de catálogo."
+    },
+
+    "catalogFilterAll": "Todo",
+    "@catalogFilterAll": {
+        "description": "Chip de categoría que quita el filtro (muestra todos los productos)."
+    },
+
+    "catalogImageUnavailable": "Imagen no disponible",
+    "@catalogImageUnavailable": {
+        "description": "Copy mostrado cuando la imagen de un producto falla al cargar."
+    },
+
+    "catalogEmptyTitle": "No hay productos",
+    "@catalogEmptyTitle": {
+        "description": "Título del estado vacío del catálogo."
+    },
+
+    "catalogEmptyMessage": "No encontramos productos en esta categoría.",
+    "@catalogEmptyMessage": {
+        "description": "Mensaje del estado vacío del catálogo."
+    },
+
+    "catalogOfflineMessage": "Sin conexión — mostrando lo último cargado",
+    "@catalogOfflineMessage": {
+        "description": "Banner mostrado cuando falla la carga de más productos por falta de red pero ya hay productos en pantalla."
+    },
+
+    "detailDescriptionTitle": "Descripción y materiales",
+    "@detailDescriptionTitle": {
+        "description": "Título de la sección expandible con la descripción del producto."
+    },
+
+    "detailTotal": "Total",
+    "@detailTotal": {
+        "description": "Etiqueta sobre el precio total en el footer fijo del detalle."
+    },
+
+    "detailAddToCart": "Agregar al carrito",
+    "@detailAddToCart": {
+        "description": "CTA principal del detalle de producto, estado inactivo."
+    },
+
+    "detailAddingToCart": "Añadiendo...",
+    "@detailAddingToCart": {
+        "description": "CTA del detalle de producto mientras se procesa, estado pendiente."
+    },
+
+    "detailAddedToCart": "Añadido ✓",
+    "@detailAddedToCart": {
+        "description": "CTA del detalle de producto tras agregar con éxito, estado de confirmación."
+    },
+
+    "detailOutOfStock": "Agotado",
+    "@detailOutOfStock": {
+        "description": "Copy mostrado cuando el producto no tiene stock disponible."
+    },
+
+    "cartEyebrow": "Tu selección",
+    "@cartEyebrow": {
+        "description": "Eyebrow sobre el título de la pantalla de carrito."
+    },
+
+    "cartTitle": "Carrito",
+    "@cartTitle": {
+        "description": "Título de la pantalla de carrito."
+    },
+
+    "cartItemsCount": "{count, plural, =1{1 pieza} other{{count} piezas}}",
+    "@cartItemsCount": {
+        "description": "Cantidad de piezas en el carrito, junto al título.",
+        "placeholders": {
+            "count": {"type": "int"}
+        }
+    },
+
+    "cartPromoHint": "Código promocional",
+    "@cartPromoHint": {
+        "description": "Placeholder del campo para ingresar un código promocional."
+    },
+
+    "cartPromoApply": "Aplicar",
+    "@cartPromoApply": {
+        "description": "Botón para aplicar el código promocional ingresado."
+    },
+
+    "cartPromoInvalid": "Código promocional no válido",
+    "@cartPromoInvalid": {
+        "description": "Copy mostrado cuando el código promocional ingresado no existe."
+    },
+
+    "cartPromoApplied": "aplicado -{percentage}%",
+    "@cartPromoApplied": {
+        "description": "Detalle mostrado junto al código promocional ya aplicado.",
+        "placeholders": {
+            "percentage": {"type": "int"}
+        }
+    },
+
+    "cartSubtotal": "Subtotal",
+    "@cartSubtotal": {
+        "description": "Fila de subtotal en el resumen de la orden."
+    },
+
+    "cartTax": "Impuestos ({rate}%)",
+    "@cartTax": {
+        "description": "Fila de impuestos en el resumen de la orden.",
+        "placeholders": {
+            "rate": {"type": "int"}
+        }
+    },
+
+    "cartDiscount": "Descuento {code}",
+    "@cartDiscount": {
+        "description": "Fila de descuento por código promocional en el resumen de la orden.",
+        "placeholders": {
+            "code": {"type": "String"}
+        }
+    },
+
+    "cartShippingLabel": "Envío",
+    "@cartShippingLabel": {
+        "description": "Fila de envío en el resumen de la orden."
+    },
+
+    "cartShippingFree": "Cortesía",
+    "@cartShippingFree": {
+        "description": "Valor de la fila de envío cuando es gratuito."
+    },
+
+    "cartTotal": "Total",
+    "@cartTotal": {
+        "description": "Fila de total en el resumen de la orden."
+    },
+
+    "cartCheckout": "Finalizar compra",
+    "@cartCheckout": {
+        "description": "CTA principal de la pantalla de carrito."
+    },
+
+    "cartOrderSuccessTitle": "¡Pedido realizado con éxito!",
+    "@cartOrderSuccessTitle": {
+        "description": "Título del diálogo de confirmación tras finalizar la compra."
+    },
+
+    "cartOrderSuccessMessage": "Gracias por tu compra. Te avisaremos cuando tu pedido esté en camino.",
+    "@cartOrderSuccessMessage": {
+        "description": "Mensaje del diálogo de confirmación tras finalizar la compra."
+    },
+
+    "cartEmptyTitle": "Tu carrito está vacío",
+    "@cartEmptyTitle": {
+        "description": "Título del estado vacío del carrito."
+    },
+
+    "cartEmptyMessage": "Agrega productos desde el catálogo para verlos aquí.",
+    "@cartEmptyMessage": {
+        "description": "Mensaje del estado vacío del carrito."
+    },
+
+    "cartExploreCatalog": "Explorar el catálogo",
+    "@cartExploreCatalog": {
+        "description": "Acción del estado vacío del carrito, vuelve a la tienda."
+    },
+
+    "cartRemoveItem": "Eliminar",
+    "@cartRemoveItem": {
+        "description": "Label semántico del botón para quitar una línea del carrito."
+    },
+
+    "cartDecrementQuantity": "Disminuir cantidad",
+    "@cartDecrementQuantity": {
+        "description": "Label semántico del botón para disminuir la cantidad de una línea."
+    },
+
+    "cartIncrementQuantity": "Aumentar cantidad",
+    "@cartIncrementQuantity": {
+        "description": "Label semántico del botón para aumentar la cantidad de una línea."
+    },
+
+    "searchEyebrow": "Buscar",
+    "@searchEyebrow": {
+        "description": "Eyebrow sobre el título de la pantalla de búsqueda."
+    },
+
+    "searchFieldHint": "Buscar productos",
+    "@searchFieldHint": {
+        "description": "Placeholder del campo de texto de la pantalla de búsqueda."
+    },
+
+    "searchInitialTitle": "Descubre productos",
+    "@searchInitialTitle": {
+        "description": "Título del estado inicial (sin búsqueda aún) de la pantalla de búsqueda."
+    },
+
+    "searchInitialMessage": "Escribe para buscar en el catálogo.",
+    "@searchInitialMessage": {
+        "description": "Mensaje del estado inicial (sin búsqueda aún) de la pantalla de búsqueda."
+    },
+
+    "searchEmptyMessage": "Intenta con otro término.",
+    "@searchEmptyMessage": {
+        "description": "Mensaje del estado vacío tras una búsqueda sin coincidencias."
+    },
+
+    "searchClearField": "Borrar búsqueda",
+    "@searchClearField": {
+        "description": "Label semántico del botón para vaciar el campo de búsqueda."
     }
 }

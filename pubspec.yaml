@@ -30,10 +30,31 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  get_it: ^9.2.1
+  flutter_bloc: ^9.1.1
+  bloc: ^9.2.1
+  equatable: ^2.1.0
+  fpdart: ^1.2.0
+  dio: ^5.11.0
+  connectivity_plus: ^7.3.1
+  flutter_dotenv: ^6.0.1
+  intl: ^0.20.2
+
+  # Local path dependency while the design system is under active
+  # development (see ../inter_commerce_app_design_system). Switch to a
+  # git dependency (pinned tag/commit) once it stabilizes.
+  inter_commerce_app_design_system:
+    path: ../inter_commerce_app_design_system
+  objectbox: ^5.3.2
+  objectbox_flutter_libs: ^5.3.2
+  path_provider: ^2.1.6
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
@@ -48,6 +69,22 @@ dev_dependencies:
 
   # Hook `commit-msg` que valida Conventional Commits (ver bin/git_hooks.dart).
   git_hooks: ^1.0.2
+  objectbox_generator: ^5.3.2
+  build_runner: ^2.15.1
+
+  # Tests unitarios: fakes/mocks de repos y use cases (mocktail, sin
+  # code-gen) y aserciones de secuencias de estado para Cubits (bloc_test).
+  mocktail: ^1.0.4
+  bloc_test: ^10.0.0
+
+  # Genera el ícono de la app (Android/iOS) a partir de assets/icon/app_icon.png.
+  flutter_launcher_icons: ^0.14.4
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  remove_alpha_ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -59,6 +96,19 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  # Generates AppLocalizations from lib/l10n/*.arb (config in l10n.yaml)
+  # on every `flutter pub get` / build.
+  generate: true
+
+  # `.env` (per-flavor config, see .env.example) must be bundled as an
+  # asset so flutter_dotenv can load it at runtime. `assets/images` and
+  # `assets/icons` are empty for now — populated with the design system
+  # integration; referenced through core/resources/app_assets.dart.
+  assets:
+    - .env
+    - assets/images/
+    - assets/icons/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

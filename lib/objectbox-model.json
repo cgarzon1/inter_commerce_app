@@ -1,0 +1,193 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4398106125119480467",
+      "lastPropertyId": "7:5329936059691067534",
+      "name": "CartItemEntity",
+      "properties": [
+        {
+          "id": "1:1473345860896347184",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:5795155396974454926",
+          "name": "productId",
+          "indexId": "1:8160892466341074937",
+          "type": 6,
+          "flags": 32808
+        },
+        {
+          "id": "3:6574863927752700321",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "4:4329038674962205204",
+          "name": "subtitle",
+          "type": 9
+        },
+        {
+          "id": "5:3161046299101270147",
+          "name": "thumbnail",
+          "type": 9
+        },
+        {
+          "id": "6:3929626872228172177",
+          "name": "unitPrice",
+          "type": 8
+        },
+        {
+          "id": "7:5329936059691067534",
+          "name": "quantity",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:4044685411208064454",
+      "lastPropertyId": "3:5778036320500150573",
+      "name": "CartPromoEntity",
+      "properties": [
+        {
+          "id": "1:907268724693919759",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:4083982683634713996",
+          "name": "code",
+          "type": 9
+        },
+        {
+          "id": "3:5778036320500150573",
+          "name": "discountPercentage",
+          "type": 8
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:1935027286795338042",
+      "lastPropertyId": "3:7449672658549171045",
+      "name": "ProductCategoryEntity",
+      "properties": [
+        {
+          "id": "1:7241405818109104052",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:2460386974778915066",
+          "name": "slug",
+          "indexId": "2:1095129117367154737",
+          "type": 9,
+          "flags": 34848
+        },
+        {
+          "id": "3:7449672658549171045",
+          "name": "name",
+          "type": 9
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "4:3787411160870313844",
+      "lastPropertyId": "14:2515871009861193364",
+      "name": "ProductEntity",
+      "properties": [
+        {
+          "id": "1:6317362723521603818",
+          "name": "id",
+          "type": 6,
+          "flags": 129
+        },
+        {
+          "id": "2:6836261285014759625",
+          "name": "title",
+          "type": 9
+        },
+        {
+          "id": "3:800458165040236116",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "4:5856684362154195856",
+          "name": "category",
+          "type": 9
+        },
+        {
+          "id": "5:7819586831413743604",
+          "name": "price",
+          "type": 8
+        },
+        {
+          "id": "6:1711216181145446379",
+          "name": "discountPercentage",
+          "type": 8
+        },
+        {
+          "id": "7:2537558733774731336",
+          "name": "rating",
+          "type": 8
+        },
+        {
+          "id": "8:1207239369521381123",
+          "name": "stock",
+          "type": 6
+        },
+        {
+          "id": "9:6347474868260678721",
+          "name": "tags",
+          "type": 30
+        },
+        {
+          "id": "10:6529921242367717475",
+          "name": "brand",
+          "type": 9
+        },
+        {
+          "id": "11:3153446516663948474",
+          "name": "sku",
+          "type": 9
+        },
+        {
+          "id": "12:1611198283932901625",
+          "name": "availabilityStatus",
+          "type": 9
+        },
+        {
+          "id": "13:5929341014248594007",
+          "name": "thumbnail",
+          "type": 9
+        },
+        {
+          "id": "14:2515871009861193364",
+          "name": "images",
+          "type": 30
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "4:3787411160870313844",
+  "lastIndexId": "2:1095129117367154737",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
