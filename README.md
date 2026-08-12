@@ -15,6 +15,7 @@ APK de release firmado, disponible en [GitHub Releases](https://github.com/cgarz
 
 ## Contenido
 
+- [Demo](#demo)
 - [Conventional Commits](#conventional-commits)
 - [Design system](#design-system)
 - [Arquitectura](#arquitectura)
@@ -23,6 +24,14 @@ APK de release firmado, disponible en [GitHub Releases](https://github.com/cgarz
 - [Stack](#stack)
 - [Cómo correr el proyecto](#cómo-correr-el-proyecto)
 - [Tests](#tests)
+
+## Demo
+
+| | |
+|---|---|
+| ![Catálogo de productos](READMER/Demo_Catalogo.png) | ![Detalle de producto](READMER/Demo_Detalle_Producto.png) |
+| ![Búsqueda de productos](READMER/Demo_Busqueda.png) | ![Carrito de compras](READMER/Demo_Carrito.png) |
+| ![Confirmación de pedido realizado con éxito](READMER/Demo_Pedido_Exitoso.png) | |
 
 ## Conventional Commits
 
