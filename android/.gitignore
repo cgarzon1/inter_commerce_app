@@ -12,3 +12,10 @@ GeneratedPluginRegistrant.java
 key.properties
 **/*.keystore
 **/*.jks
+
+# Fastlane — salida generada en cada corrida, y credenciales locales.
+fastlane/report.xml
+fastlane/README.md
+fastlane/.env
+fastlane/.env.*
+!fastlane/.env.example

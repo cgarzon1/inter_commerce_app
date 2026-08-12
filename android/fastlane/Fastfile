@@ -1,0 +1,51 @@
+default_platform(:android)
+
+# Nombre del repo en GitHub, usado por `set_github_release`.
+GITHUB_REPO = "cgarzon1/inter_commerce_app"
+
+platform :android do
+  desc "Compila el APK de release firmado, lo etiqueta con un tag de git " \
+       "y publica un GitHub Release con el APK adjunto.\n" \
+       "Uso: fastlane android release [flavor:qa]"
+  lane :release do |options|
+    require "yaml"
+
+    flavor = options[:flavor] || ENV["FLAVOR"] || "dev"
+
+    # El Fastfile corre con cwd = android/, la raíz del proyecto Flutter
+    # está un nivel arriba.
+    project_root = File.expand_path("..", Dir.pwd)
+    pubspec = YAML.load_file(File.join(project_root, "pubspec.yaml"))
+    version_name, build_number = pubspec["version"].to_s.split("+")
+    tag_name = "v#{version_name}+#{build_number}"
+
+    key_properties = File.join(Dir.pwd, "key.properties")
+    unless File.exist?(key_properties)
+      UI.user_error!(
+        "No existe android/key.properties — el build firmaría con la " \
+        "debug key en vez de la release key. Generá el keystore primero " \
+        "(ver README) antes de correr este lane."
+      )
+    end
+
+    UI.message("Compilando APK de release (flavor=#{flavor}, versión=#{tag_name})...")
+    sh("cd #{project_root} && fvm flutter build apk --release --dart-define=FLAVOR=#{flavor}")
+
+    apk_path = File.join(project_root, "build/app/outputs/flutter-apk/app-release.apk")
+    UI.user_error!("No se encontró el APK generado en #{apk_path}") unless File.exist?(apk_path)
+
+    add_git_tag(tag: tag_name)
+    push_git_tags(tag: tag_name)
+
+    set_github_release(
+      repository_name: GITHUB_REPO,
+      api_token: ENV["GITHUB_API_TOKEN"],
+      tag_name: tag_name,
+      name: tag_name,
+      description: "Release APK firmado (flavor #{flavor}) — build automatizado con Fastlane.",
+      upload_assets: [apk_path]
+    )
+
+    UI.success("Listo — #{tag_name} publicado en GitHub Releases con el APK adjunto.")
+  end
+end
