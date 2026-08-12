@@ -59,5 +59,70 @@
     "errorUnexpected": "Ocurrió un error inesperado.",
     "@errorUnexpected": {
         "description": "Copy para UnexpectedFailure / catch-all."
+    },
+
+    "navShop": "Tienda",
+    "@navShop": {
+        "description": "Tab del bottom nav: catálogo."
+    },
+
+    "navSearch": "Buscar",
+    "@navSearch": {
+        "description": "Tab del bottom nav: búsqueda."
+    },
+
+    "navCart": "Carrito",
+    "@navCart": {
+        "description": "Tab del bottom nav: carrito."
+    },
+
+    "navAccount": "Cuenta",
+    "@navAccount": {
+        "description": "Tab del bottom nav: cuenta."
+    },
+
+    "comingSoonTitle": "Próximamente",
+    "@comingSoonTitle": {
+        "description": "Título para una sección/tab aún no implementada."
+    },
+
+    "comingSoonMessage": "Estamos trabajando en esta sección.",
+    "@comingSoonMessage": {
+        "description": "Mensaje para una sección/tab aún no implementada."
+    },
+
+    "catalogEyebrow": "Catálogo",
+    "@catalogEyebrow": {
+        "description": "Eyebrow sobre el título de la pantalla de catálogo."
+    },
+
+    "catalogTitle": "Todos los productos",
+    "@catalogTitle": {
+        "description": "Título grande de la pantalla de catálogo."
+    },
+
+    "catalogFilterAll": "Todo",
+    "@catalogFilterAll": {
+        "description": "Chip de categoría que quita el filtro (muestra todos los productos)."
+    },
+
+    "catalogImageUnavailable": "Imagen no disponible",
+    "@catalogImageUnavailable": {
+        "description": "Copy mostrado cuando la imagen de un producto falla al cargar."
+    },
+
+    "catalogEmptyTitle": "No hay productos",
+    "@catalogEmptyTitle": {
+        "description": "Título del estado vacío del catálogo."
+    },
+
+    "catalogEmptyMessage": "No encontramos productos en esta categoría.",
+    "@catalogEmptyMessage": {
+        "description": "Mensaje del estado vacío del catálogo."
+    },
+
+    "catalogOfflineMessage": "Sin conexión — mostrando lo último cargado",
+    "@catalogOfflineMessage": {
+        "description": "Banner mostrado cuando falla la carga de más productos por falta de red pero ya hay productos en pantalla."
     }
 }
